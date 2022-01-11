@@ -1,7 +1,8 @@
 import Button from "./Button";
+import Home from "./Home";
+import HelloMsg from "./HelloMsg";
 import styles from "./App.module.css";
 import { useState, useEffect } from "react";
-import { func } from "prop-types";
 
 function App() {
   const [counter, setValue] = useState(0);
@@ -30,7 +31,7 @@ function App() {
     console.log("counter가 변했어요");
   }, [counter]); // 'counter'가 변화할 때만 실행
 
-  
+
   return (
     <div>
       <input
@@ -46,15 +47,17 @@ function App() {
         {showing ? <Hello /> : null}
         <button onClick={onClick2}>{showing ? "Hide" : "Show"}</button>
       </p>
+
+      <Home />
+      <HelloMsg name="필승"/>
     </div>
   );
 }
 
 function Hello () {
-  function effectFn() {
+  useEffect( () => {
     console.log("created :)")
-  }
-  useEffect( effectFn, []);
+  }, []);
 
   return <h1>Hello</h1>;
 }
